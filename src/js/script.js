@@ -28,5 +28,22 @@ document.getElementById("verificar").addEventListener('click', () => {
     } else {
         resultado.textContent = "Notícia não encontrada na base.";
     }
+    updatingDisplay(busca, resultado.textContent)
 });
+
+window.addEventListener('DOMContentLoaded', () => {
+    const ul = document.getElementById("historico");
+    const historicoSalvo = localStorage.getItem("historico");
+    if (historicoSalvo) {
+        ul.innerHTML = JSON.parse(historicoSalvo);
+    }
+});
+
+function updatingDisplay(busca, resultado) {
+    const ul = document.getElementById("historico");
+    const li = document.createElement("li");
+    li.textContent = `"${busca}" - ${resultado}`;
+    ul.appendChild(li);
+    localStorage.setItem("historico", JSON.stringify(ul.innerHTML));
+}
 
