@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+main{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+button {
+    margin-top: 20px;
+
+}
+p{
+    margin-top: 40px;
+}
+ul{
+    margin-top: 20px;
+}
+.certo{
+    background-color: green;
+}
+.errado{
+    background-color: red;
+}

@@ -12,6 +12,8 @@ const noticiasPredefinidas = [
     { texto: "O ser humano pode respirar debaixo d’água sem equipamentos.", status: false }
 ];
 
+const li = document.createElement("li");
+
 document.getElementById("verificar").addEventListener('click', () => {
     const busca = document.getElementById("busca").value.trim();
     const resultado = document.getElementById("resultado");
@@ -22,8 +24,11 @@ document.getElementById("verificar").addEventListener('click', () => {
     if (noticiaEncontrada) {
         if (noticiaEncontrada.status) {
             resultado.textContent = "Fato Verificado ✅";
+            li.classList.add("Certo")
         } else {
             resultado.textContent = "Fake News ❌";
+            li.classList.add("errado")
+
         }
     } else {
         resultado.textContent = "Notícia não encontrada na base.";
@@ -44,6 +49,13 @@ function updatingDisplay(busca, resultado) {
     const li = document.createElement("li");
     li.textContent = `"${busca}" - ${resultado}`;
     ul.appendChild(li);
+    if (li.className('Certo')){
+        li.style.backgroundColor = "rgb(0, 255, 0)";
+
+    }else{
+        li.style.backgroundColor = "#ff0000";
+
+    }
     localStorage.setItem("historico", JSON.stringify(ul.innerHTML));
 }
 
