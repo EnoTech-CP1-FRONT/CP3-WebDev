@@ -24,10 +24,8 @@ document.getElementById("verificar").addEventListener('click', () => {
     if (noticiaEncontrada) {
         if (noticiaEncontrada.status) {
             resultado.textContent = "Fato Verificado ✅";
-            li.classList.add("Certo")
         } else {
             resultado.textContent = "Fake News ❌";
-            li.classList.add("errado")
 
         }
     } else {
@@ -48,14 +46,17 @@ function updatingDisplay(busca, resultado) {
     const ul = document.getElementById("historico");
     const li = document.createElement("li");
     li.textContent = `"${busca}" - ${resultado}`;
-    ul.appendChild(li);
-    if (li.className('Certo')){
-        li.style.backgroundColor = "rgb(0, 255, 0)";
 
-    }else{
-        li.style.backgroundColor = "#ff0000";
-
+    // Define a cor de fundo com base na classe
+    if (resultado.includes("Fato Verificado")) {
+        li.classList.add("Certo");
+        li.style.backgroundColor = "rgb(0, 255, 0)"; // verde
+    } else if (resultado.includes("Fake News")) {
+        li.classList.add("errado");
+        li.style.backgroundColor = "#ff0000"; // vermelho
     }
+
+    ul.appendChild(li);
     localStorage.setItem("historico", JSON.stringify(ul.innerHTML));
 }
 
